@@ -4,7 +4,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion '30.0.3'
     defaultConfig {
-        applicationId "com.android.simple"
+        applicationId "com.gzdd.android.jeeplus"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -17,9 +17,9 @@ android {
     }
     signingConfigs {
         config {
-            keyAlias 'key0'
+            keyAlias 'IOLOII'
             keyPassword '123456'
-            storeFile file('test.jks')
+            storeFile file('IOLOII.keystore')
             storePassword '123456'
             v1SigningEnabled true
             v2SigningEnabled true
@@ -41,6 +41,13 @@ android {
     aaptOptions {
         additionalParameters '--auto-add-overlay'
         ignoreAssetsPattern "!.svn:!.git:.*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~"
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName =   "填报审核v${defaultConfig.versionName}.apk"
+//            _${new Date().format("yyyy-MM-dd-hh-mm")}
+        }
     }
 }
 
